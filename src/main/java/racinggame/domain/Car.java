@@ -22,4 +22,9 @@ public class Car {
         return distance.value();
     }
 
+    public void move(Movable movable) {
+        if (movable.move()) {
+            distance.increase();
+        }
+    }
 }
