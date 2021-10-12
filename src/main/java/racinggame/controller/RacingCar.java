@@ -3,6 +3,7 @@ package racinggame.controller;
 import racinggame.domain.Car;
 import racinggame.domain.Cars;
 import racinggame.domain.RandomMove;
+import racinggame.domain.Winners;
 
 public class RacingCar {
 
@@ -21,4 +22,9 @@ public class RacingCar {
     public Cars cars() {
         return cars;
     }
+
+    public Cars winners() {
+        return Winners.select(cars);
+    }
+
 }

@@ -3,7 +3,6 @@ package racinggame;
 import racinggame.controller.RacingCar;
 import racinggame.domain.CarNameException;
 import racinggame.domain.CarsException;
-import racinggame.domain.Winners;
 import racinggame.ui.InputView;
 import racinggame.ui.ResultView;
 
@@ -23,7 +22,7 @@ public class Application {
             ResultView.printRace(racingCar.cars());
         }
 
-        ResultView.printWinner(Winners.select(racingCar.cars()));
+        ResultView.printWinner(racingCar.winners());
     }
 
     private static RacingCar inputNames() {
