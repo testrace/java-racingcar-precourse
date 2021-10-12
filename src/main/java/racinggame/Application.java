@@ -8,7 +8,7 @@ import racinggame.ui.ResultView;
 
 public class Application {
 
-    private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String RESULT_MESSAGE = "%n실행 결과%n";
     private static final String ERROR = "[ERROR] 잘못 입력하셨습니다. 다시 입력해주세요. ";
 
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class Application {
         RacingCar racingCar = inputNames();
         int tryCount = InputView.tryCount();
 
-        System.out.println(RESULT_MESSAGE);
+        System.out.printf(RESULT_MESSAGE);
         for (int i = 0; i < tryCount; i++) {
             racingCar.move();
             ResultView.printRace(racingCar.cars());
