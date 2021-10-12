@@ -25,14 +25,14 @@
 - [x] 우승자가 여러명인 경우 쉼표로 구분하여 출력
 
 ## 프로그래밍 요구사항
-- [ ] `Application.java`의 `main` 메서드에 시작점 구현.
-- [ ] JDK의 Random, Sanner API 대신 nextstep.utils 패키지의 Randoms, Console API 활용
-- [ ] `ApplicationTest.java`의 `전진_정지` 테스트 케이스를 통과해야한다.
-- [ ] `ApplicationTest.java`의 `이름에_대한_예외_처리` 테스트 케이스를 통과해야한다.
-- [ ] 들여쓰기 1단계만 허용
-- [ ] JDK Stream 사용 금지
-- [ ] else 사용 금지
-- [ ] 메서드당 10라인 이하
-- [ ] 도메인에 단위 테스트 추가
-- [ ] 일급 콜렉션을 활용해 구현한다
-- [ ] 모든 원시값과 문자열을 포장한다
+- [x] `Application.java`의 `main` 메서드에 시작점 구현.
+- [x] JDK의 Random, Sanner API 대신 nextstep.utils 패키지의 Randoms, Console API 활용
+- [x] `ApplicationTest.java`의 `전진_정지` 테스트 케이스를 통과해야한다.
+- [x] `ApplicationTest.java`의 `이름에_대한_예외_처리` 테스트 케이스를 통과해야한다.
+- [x] 들여쓰기 1단계만 허용
+- [x] JDK Stream 사용 금지
+- [x] else 사용 금지
+- [x] 메서드당 10라인 이하
+- [x] 도메인에 단위 테스트 추가
+- [x] 일급 콜렉션을 활용해 구현한다
+- [x] 모든 원시값과 문자열을 포장한다
