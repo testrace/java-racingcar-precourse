@@ -1,7 +1,39 @@
 package racinggame;
 
+import racinggame.controller.RacingCar;
+import racinggame.domain.CarNameException;
+import racinggame.domain.CarsException;
+import racinggame.domain.Winners;
+import racinggame.ui.InputView;
+import racinggame.ui.ResultView;
+
 public class Application {
+
+    private static final String RESULT_MESSAGE = "실행 결과";
+    private static final String ERROR = "[ERROR] 잘못 입력하셨습니다. 다시 입력해주세요. ";
+
     public static void main(String[] args) {
-        // TODO 자동차 경주 게임 구현
+
+        RacingCar racingCar = inputNames();
+        int tryCount = InputView.tryCount();
+
+        System.out.println(RESULT_MESSAGE);
+        for (int i = 0; i < tryCount; i++) {
+            racingCar.move();
+            ResultView.printRace(racingCar.cars());
+        }
+
+        ResultView.printWinner(Winners.select(racingCar.cars()));
     }
+
+    private static RacingCar inputNames() {
+        try {
+            return new RacingCar(InputView.carNames());
+        } catch (CarNameException | CarsException ex) {
+            System.out.println(ERROR + ex.getMessage());
+            return inputNames();
+        }
+    }
+
+
 }
