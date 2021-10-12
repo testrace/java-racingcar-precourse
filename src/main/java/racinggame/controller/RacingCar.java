@@ -7,6 +7,8 @@ import racinggame.domain.Winners;
 
 public class RacingCar {
 
+    private static final RandomMove randomMove = new RandomMove();
+
     private Cars cars;
 
     public RacingCar(String carNames) {
@@ -15,7 +17,7 @@ public class RacingCar {
 
     public void move() {
         for (Car car : cars.cars()) {
-            car.move(new RandomMove());
+            car.move(randomMove);
         }
     }
 
