@@ -1,5 +1,7 @@
 package racinggame.domain;
 
+import java.util.Objects;
+
 public class CarName {
 
     private static final int MAX_LENGTH = 5;
@@ -22,5 +24,18 @@ public class CarName {
 
     public String name() {
         return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarName carName = (CarName) o;
+        return Objects.equals(value, carName.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

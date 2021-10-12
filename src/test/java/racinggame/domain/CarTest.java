@@ -27,7 +27,7 @@ class CarTest {
 
         //when
         car.move(() -> movable);
-        int actual = car.distance();
+        int actual = car.distance().value();
 
         //then
         assertThat(actual).isEqualTo(expected);

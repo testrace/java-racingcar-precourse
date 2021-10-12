@@ -37,4 +37,19 @@ class DistanceTest {
         //then
         assertThat(actual).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("최대 이동거리")
+    void max() {
+        //given
+        Distance increased = new Distance(1);
+
+        //when
+        Distance max = Distance.max(distance, increased);
+
+        //then
+        assertThat(max).isEqualTo(new Distance(1));
+
+    }
+
 }
