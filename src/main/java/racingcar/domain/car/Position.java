@@ -4,13 +4,18 @@ import java.util.Objects;
 
 public class Position {
 
+    private static final int MINIMUM = 0;
+
     private final int value;
 
     public Position() {
-        this.value = 0;
+        this.value = MINIMUM;
     }
 
     public Position(int value) {
+        if (value < MINIMUM) {
+            throw InvalidPositionException.ofNegative(value);
+        }
         this.value = value;
     }
 
