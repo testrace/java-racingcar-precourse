@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Position {
 
     private static final int MINIMUM = 0;
+    private static final int UNIT_OF_INCREASE = 1;
 
     private final int value;
 
@@ -17,6 +18,10 @@ public class Position {
             throw InvalidPositionException.ofNegative(value);
         }
         this.value = value;
+    }
+
+    public Position increase() {
+        return new Position(this.value + UNIT_OF_INCREASE);
     }
 
     @Override
