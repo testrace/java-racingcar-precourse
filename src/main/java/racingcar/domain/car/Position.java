@@ -32,6 +32,10 @@ public class Position {
         return from(value + UNIT_OF_INCREASE);
     }
 
+    public boolean greaterThan(Position comparePosition) {
+        return this.value > comparePosition.value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

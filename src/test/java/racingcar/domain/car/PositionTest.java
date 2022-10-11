@@ -43,4 +43,15 @@ class PositionTest {
         assertThat(actual).isSameAs(Position.from(5));
     }
 
+    @DisplayName("자동차 위치 비교")
+    @Test
+    void compare() {
+        final Position first = new Position(10);
+        final Position second = new Position(5);
+
+        boolean actual = first.greaterThan(second);
+
+        assertThat(actual).isTrue();
+    }
+
 }
