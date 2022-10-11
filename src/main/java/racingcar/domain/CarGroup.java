@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import racingcar.domain.car.Car;
+import racingcar.domain.car.Position;
 
 public class CarGroup {
 
     private final List<Car> cars;
 
-    private CarGroup(List<Car> cars) {
+    public CarGroup(List<Car> cars) {
         validateSize(cars);
         this.cars = cars;
     }
@@ -39,6 +40,28 @@ public class CarGroup {
             movedCars.add(car.move(movingStrategy));
         }
         return new CarGroup(movedCars);
+    }
+
+    public Position getMaxPosition() {
+        Position maxPosition = new Position();
+        for (Car car : cars) {
+            maxPosition = car.greaterThanPosition(maxPosition);
+        }
+        return maxPosition;
+    }
+
+    public CarGroup findSamePositionCars(Position position) {
+        List<Car> maxPositionCars = new ArrayList<>();
+        for (Car car : cars) {
+            extractSamePositionCars(position, maxPositionCars, car);
+        }
+        return new CarGroup(maxPositionCars);
+    }
+
+    private void extractSamePositionCars(Position position, List<Car> maxPositionCars, Car car) {
+        if (car.hasSamePosition(position)) {
+            maxPositionCars.add(car);
+        }
     }
 
     @Override

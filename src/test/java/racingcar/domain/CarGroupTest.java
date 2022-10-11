@@ -10,8 +10,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Position;
 
 class CarGroupTest {
+
+
+    final Car bmw = createCar("bmw", 3);
+    final Car benz = createCar("benz", 3);
+    final Car audi = createCar("audi", 2);
 
     @DisplayName("이름으로 자동차들을 생성한다")
     @Test
@@ -65,6 +72,27 @@ class CarGroupTest {
         assertThat(actual).isEqualTo(CarGroup.from(names));
     }
 
+    @DisplayName("가장 멀리간 자동차의 위치를 찾는다")
+    @Test
+    void findMaxPositionCar() {
+
+        CarGroup cars = new CarGroup(createFixtureCarGroup());
+
+        Position actual = cars.getMaxPosition();
+
+        assertThat(actual).isEqualTo(Position.from(3));
+    }
+
+    @DisplayName("특정 위치와 동일한 자동차들을 찾는다")
+    @Test
+    void findSamePositionCarGroup() {
+        CarGroup cars = new CarGroup(createFixtureCarGroup());
+
+        CarGroup actual = cars.findSamePositionCars(Position.from(3));
+
+        assertThat(actual).isEqualTo(new CarGroup(Arrays.asList(bmw, benz)));
+    }
+
     private static class MustBeTrue implements MovingStrategy {
 
         @Override
@@ -80,4 +108,13 @@ class CarGroupTest {
             return false;
         }
     }
+
+    private List<Car> createFixtureCarGroup() {
+        return Arrays.asList(bmw, benz, audi);
+    }
+
+    private Car createCar(final String name, final int position) {
+        return new Car(name, position);
+    }
+
 }
