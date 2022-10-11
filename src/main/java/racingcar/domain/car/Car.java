@@ -29,6 +29,17 @@ public class Car {
         return this;
     }
 
+    public Position greaterThanPosition(Position comparePosition) {
+        if (this.position.greaterThan(comparePosition)) {
+            return this.position;
+        }
+        return comparePosition;
+    }
+
+    public boolean hasSamePosition(Position comparePosition) {
+        return this.position.equals(comparePosition);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
