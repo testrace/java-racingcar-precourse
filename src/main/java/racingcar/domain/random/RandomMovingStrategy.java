@@ -14,6 +14,7 @@ public class RandomMovingStrategy implements MovingStrategy {
 
     @Override
     public boolean movable() {
-        return movingInclusive.greaterThanOrEquals(randomRange.pickNumber());
+        PositiveNumber otherPositiveNumber = randomRange.pickNumber();
+        return otherPositiveNumber.greaterThanOrEquals(movingInclusive);
     }
 }

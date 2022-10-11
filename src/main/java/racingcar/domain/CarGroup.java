@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import racingcar.domain.car.Car;
@@ -25,13 +26,9 @@ public class CarGroup {
     }
 
     private static void validateSize(List<?> cars) {
-        if (cars == null || insufficientCars(cars)) {
+        if (cars == null || cars.isEmpty()) {
             throw new IllegalArgumentException();
         }
-    }
-
-    private static boolean insufficientCars(List<?> cars) {
-        return cars.isEmpty() || cars.size() == 1;
     }
 
     public CarGroup move(MovingStrategy movingStrategy) {
@@ -62,6 +59,18 @@ public class CarGroup {
         if (car.hasSamePosition(position)) {
             maxPositionCars.add(car);
         }
+    }
+
+    public List<String> names() {
+        List<String> names = new ArrayList<>();
+        for (Car car : cars) {
+            names.add(car.getName());
+        }
+        return names;
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 
     @Override

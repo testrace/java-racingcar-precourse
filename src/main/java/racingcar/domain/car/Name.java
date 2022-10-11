@@ -8,7 +8,7 @@ public class Name {
 
     public Name(String value) {
         validate(value);
-        this.value = value;
+        this.value = value.trim();
     }
 
     private void validate(String value) {
@@ -26,6 +26,10 @@ public class Name {
         if (value == null || value.isEmpty()) {
             throw InvalidNameException.ofNull();
         }
+    }
+
+    public String value() {
+        return value;
     }
 
     @Override

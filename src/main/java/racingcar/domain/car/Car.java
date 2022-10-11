@@ -40,6 +40,14 @@ public class Car {
         return this.position.equals(comparePosition);
     }
 
+    public String getName() {
+        return this.name.value();
+    }
+
+    public int getPosition() {
+        return this.position.value();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -56,4 +64,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, position);
     }
+
 }

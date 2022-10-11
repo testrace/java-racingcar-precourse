@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.List;
 import java.util.Objects;
 import racingcar.domain.car.Position;
 
@@ -17,6 +18,10 @@ public class Winners {
         final CarGroup samePositionCars = carGroup.findSamePositionCars(maxPosition);
 
         return new Winners(samePositionCars);
+    }
+
+    public List<String> names() {
+        return cars.names();
     }
 
     @Override
