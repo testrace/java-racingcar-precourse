@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Position {
 
-    private static final int MINIMUM = 0;
+    protected static final int MINIMUM = 0;
     private static final int UNIT_OF_INCREASE = 1;
     private static final Map<Integer, Position> CACHE = new HashMap<>();
 
