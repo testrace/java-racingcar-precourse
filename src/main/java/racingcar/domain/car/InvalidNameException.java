@@ -2,14 +2,21 @@ package racingcar.domain.car;
 
 public class InvalidNameException extends RuntimeException {
 
-    private static final String NULL_OR_EMPTY = "이름은 비어있을 수 없습니다.";
+    public static final int LIMIT_LENGTH = 5;
+
+    private static final String NULL_OR_EMPTY_MESSAGE = "이름은 비어있을 수 없습니다.";
+    private static final String LIMIT_LENGTH_MESSAGE = "이름은 5자를 초과할 수 없습니다. 입력 이름: %d";
 
     private InvalidNameException(String message) {
         super(message);
     }
 
     public static InvalidNameException ofNull() {
-        return new InvalidNameException(NULL_OR_EMPTY);
+        return new InvalidNameException(NULL_OR_EMPTY_MESSAGE);
+    }
+
+    public static InvalidNameException ofLimitLength(int length) {
+        return new InvalidNameException(String.format(LIMIT_LENGTH_MESSAGE, length));
     }
 
 }

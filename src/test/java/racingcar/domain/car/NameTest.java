@@ -2,6 +2,8 @@ package racingcar.domain.car;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
@@ -13,6 +15,16 @@ class NameTest {
         assertThatThrownBy(() -> new Name(value))
                 .isInstanceOf(InvalidNameException.class)
                 .hasMessage("이름은 비어있을 수 없습니다.");
+    }
+
+    @DisplayName("5자를 초과하는 이름은 생성할 수 없다")
+    @Test
+    void invalidLengthOfName() {
+        String overValue = "korando";
+
+        assertThatThrownBy(() -> new Name(overValue))
+                .isInstanceOf(InvalidNameException.class)
+                .hasMessage("이름은 5자를 초과할 수 없습니다. 입력 이름: " + overValue.length());
     }
 
 }
