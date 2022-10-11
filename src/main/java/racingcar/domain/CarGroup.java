@@ -33,6 +33,14 @@ public class CarGroup {
         return cars.isEmpty() || cars.size() == 1;
     }
 
+    public CarGroup move(MovingStrategy movingStrategy) {
+        List<Car> movedCars = new ArrayList<>();
+        for (Car car : this.cars) {
+            movedCars.add(car.move(movingStrategy));
+        }
+        return new CarGroup(movedCars);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

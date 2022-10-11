@@ -40,4 +40,44 @@ class CarGroupTest {
         assertThatThrownBy(() -> CarGroup.from(aloneName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("자동차들을 움직이게 한다.")
+    @Test
+    void movedAllCars() {
+        List<String> names = Arrays.asList("bmw", "benz", "audi");
+
+        CarGroup cars = CarGroup.from(names);
+
+        CarGroup actual = cars.move(new MustBeTrue());
+
+        assertThat(actual).isNotEqualTo(CarGroup.from(names));
+    }
+
+    @DisplayName("자동차들을 움직이지 않게 한다.")
+    @Test
+    void allTheCarsDidNotMove() {
+        List<String> names = Arrays.asList("bmw", "benz", "audi");
+
+        CarGroup cars = CarGroup.from(names);
+
+        CarGroup actual = cars.move(new MustBeFalse());
+
+        assertThat(actual).isEqualTo(CarGroup.from(names));
+    }
+
+    private static class MustBeTrue implements MovingStrategy {
+
+        @Override
+        public boolean movable() {
+            return true;
+        }
+    }
+
+    private static class MustBeFalse implements MovingStrategy {
+
+        @Override
+        public boolean movable() {
+            return false;
+        }
+    }
 }
