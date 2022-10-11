@@ -1,27 +1,35 @@
 package racingcar.domain.car;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Position {
 
     private static final int MINIMUM = 0;
     private static final int UNIT_OF_INCREASE = 1;
+    private static final Map<Integer, Position> CACHE = new HashMap<>();
 
     private final int value;
 
     public Position() {
-        this.value = MINIMUM;
+        this(MINIMUM);
     }
 
     public Position(int value) {
         if (value < MINIMUM) {
-            throw InvalidPositionException.ofNegative(value);
+            throw new InvalidPositionException(value);
         }
         this.value = value;
+        CACHE.putIfAbsent(value, this);
+    }
+
+    public static Position from(int value) {
+        return CACHE.computeIfAbsent(value, Position::new);
     }
 
     public Position increase() {
-        return new Position(this.value + UNIT_OF_INCREASE);
+        return from(value + UNIT_OF_INCREASE);
     }
 
     @Override

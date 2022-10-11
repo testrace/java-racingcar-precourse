@@ -35,4 +35,12 @@ class PositionTest {
         assertThat(actual).isEqualTo(new Position(1));
     }
 
+    @DisplayName("인스턴스 캐시")
+    @Test
+    void cache() {
+        final Position actual = Position.from(5);
+
+        assertThat(actual).isSameAs(Position.from(5));
+    }
+
 }
