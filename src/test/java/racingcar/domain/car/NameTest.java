@@ -1,5 +1,6 @@
 package racingcar.domain.car;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
@@ -22,9 +23,21 @@ class NameTest {
     void invalidLengthOfName() {
         String overValue = "korando";
 
+        String expectedMessage = String.format("이름은 5자를 초과할 수 없습니다. 이름: %s, 길이: %d",
+                overValue, overValue.length());
+
         assertThatThrownBy(() -> new Name(overValue))
                 .isInstanceOf(InvalidNameException.class)
-                .hasMessage("이름은 5자를 초과할 수 없습니다. 입력 이름: " + overValue.length());
+                .hasMessage(expectedMessage);
     }
 
+    @DisplayName("자동차 이름 생성")
+    @Test
+    void createName() {
+        String value = "bmw";
+
+        Name actual = new Name(value);
+
+        assertThat(actual).isEqualTo(new Name("bmw"));
+    }
 }
